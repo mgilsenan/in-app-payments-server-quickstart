@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 5000;
+
 const express = require('express');
 const app = express();
 const { Client, Environment } = require("square");
@@ -105,7 +105,7 @@ function getOrderRequest(locationId) {
           name: "A test name",
           quantity: "1",
           basePriceMoney: {
-            amount: 100,
+            amount: 200,
             currency: "CAD"
           }
         }
