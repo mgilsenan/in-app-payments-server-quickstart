@@ -98,6 +98,7 @@ app.post('/createCustomerCard', async (request, response) => {
 });
 
 function getOrderRequest(locationId,fare,price) {
+  const farePrice = parseInt("4") * 100;
   return {
     idempotencyKey: crypto.randomBytes(12).toString('hex'),
     order: {
@@ -107,7 +108,7 @@ function getOrderRequest(locationId,fare,price) {
           name: fare,
           quantity: "1",
           basePriceMoney: {
-            amount: 400,
+            amount: farePrice,
             currency: "CAD"
           }
         }
