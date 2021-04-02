@@ -107,7 +107,7 @@ function getOrderRequest(locationId,fare,price) {
           name: fare,
           quantity: "1",
           basePriceMoney: {
-            amount: 4*100,
+            amount: 400,
             currency: "CAD"
           }
         }
