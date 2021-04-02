@@ -24,7 +24,8 @@ app.post('/chargeForCookie', async (request, response) => {
     const listLocationsResponse = await locationsApi.listLocations();
     const locationId = listLocationsResponse.result.locations[0].id;
     const fare = requestBody.fare;
-    const createOrderRequest = getOrderRequest(locationId,fare);
+    const price = requestBody.price;
+    const createOrderRequest = getOrderRequest(locationId,fare,price);
     const createOrderResponse = await ordersApi.createOrder(createOrderRequest);
 
     const createPaymentRequest = {
@@ -54,7 +55,7 @@ app.post('/chargeCustomerCard', async (request, response) => {
   try {
     const listLocationsResponse = await locationsApi.listLocations();
     const locationId = listLocationsResponse.result.locations[0].id;
-    const createOrderRequest = getOrderRequest(locationId,fare);
+    const createOrderRequest = getOrderRequest(locationId,fare,price);
     const createOrderResponse = await ordersApi.createOrder(createOrderRequest);
     const createPaymentRequest = {
       idempotencyKey: crypto.randomBytes(12).toString('hex'),
@@ -96,7 +97,7 @@ app.post('/createCustomerCard', async (request, response) => {
   }
 });
 
-function getOrderRequest(locationId,fare) {
+function getOrderRequest(locationId,fare,price) {
   return {
     idempotencyKey: crypto.randomBytes(12).toString('hex'),
     order: {
@@ -106,7 +107,7 @@ function getOrderRequest(locationId,fare) {
           name: fare,
           quantity: "1",
           basePriceMoney: {
-            amount: 300,
+            amount: 4*100,
             currency: "CAD"
           }
         }
