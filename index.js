@@ -105,7 +105,7 @@ function getOrderRequest(locationId) {
           name: "A test name",
           quantity: "1",
           basePriceMoney: {
-            amount: 200,
+            amount: 300,
             currency: "CAD"
           }
         }
