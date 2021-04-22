@@ -18,7 +18,7 @@ const defaultClient = new Client({
 
 const { paymentsApi, ordersApi, locationsApi, customersApi } = defaultClient;
 
-app.post('/chargeForCookie', async (request, response) => {
+app.post('/chargeTransitUser', async (request, response) => {
   const requestBody = request.body;
   try {
     const listLocationsResponse = await locationsApi.listLocations();
